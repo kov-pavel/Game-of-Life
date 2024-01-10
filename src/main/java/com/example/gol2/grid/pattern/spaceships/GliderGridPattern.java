@@ -13,10 +13,12 @@ public class GliderGridPattern extends GridPattern {
     @Override
     protected void initPattern() {
         this.pattern = new int[][] {
-                {0, 0, 0, 0},
-                {0, 1, 1, 0},
-                {0, 1, 1, 0},
-                {0, 0, 0, 0}
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
         };
     }
 }

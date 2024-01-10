@@ -2,9 +2,12 @@ package com.example.gol2;
 
 import com.example.gol2.grid.Grid;
 import com.example.gol2.grid.pattern.oscillators.BlinkerGridPattern;
+import com.example.gol2.grid.pattern.spaceships.GliderGridPattern;
+import com.example.gol2.grid.pattern.spaceships.HWSSGridPattern;
 import com.example.gol2.grid.pattern.stillLifes.BlockGridPattern;
 import com.example.gol2.grid.pattern.GridPattern;
 import com.example.gol2.grid.pattern.oscillators.PulsarGridPattern;
+import com.example.gol2.grid.pattern.stillLifes.TubGridPattern;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,14 +15,13 @@ import javafx.stage.Stage;
 public class PixelGridExample extends Application {
 
     private static Grid grid;
-    private static Stage stage;
 
     private final Runnable GoLRunnable = new Runnable() {
         @Override
         public void run() {
             try {
                 while (!Thread.interrupted()) {
-                    Thread.sleep(500);
+                    Thread.sleep(125);
                     grid.makeLogic();
                     grid.redraw();
                 }
@@ -33,11 +35,10 @@ public class PixelGridExample extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPattern[][] gridPatterns = new GridPattern[][] {
-                {BlockGridPattern.INSTANCE, BlinkerGridPattern.INSTANCE, PulsarGridPattern.INSTANCE},
-                {BlockGridPattern.INSTANCE, BlinkerGridPattern.INSTANCE, PulsarGridPattern.INSTANCE},
+                {BlockGridPattern.INSTANCE, BlinkerGridPattern.INSTANCE, GliderGridPattern.INSTANCE},
+                {TubGridPattern.INSTANCE, PulsarGridPattern.INSTANCE, HWSSGridPattern.INSTANCE},
         };
         grid = new Grid(gridPatterns);
-        stage = primaryStage;
 
         primaryStage.setTitle("Pixel Grid Example");
         primaryStage.setScene(new Scene(grid, Utils.WIDTH, Utils.HEIGHT));
