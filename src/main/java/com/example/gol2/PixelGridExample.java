@@ -1,13 +1,9 @@
 package com.example.gol2;
 
 import com.example.gol2.grid.Grid;
-import com.example.gol2.grid.pattern.oscillators.BlinkerGridPattern;
-import com.example.gol2.grid.pattern.spaceships.GliderGridPattern;
-import com.example.gol2.grid.pattern.spaceships.HWSSGridPattern;
-import com.example.gol2.grid.pattern.stillLifes.BlockGridPattern;
+import com.example.gol2.grid.pattern.EmptyGridPattern;
 import com.example.gol2.grid.pattern.GridPattern;
-import com.example.gol2.grid.pattern.oscillators.PulsarGridPattern;
-import com.example.gol2.grid.pattern.stillLifes.TubGridPattern;
+import com.example.gol2.grid.pattern.MomoGridPattern;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,7 +17,7 @@ public class PixelGridExample extends Application {
         public void run() {
             try {
                 while (!Thread.interrupted()) {
-                    Thread.sleep(125);
+                    Thread.sleep(5);
                     grid.makeLogic();
                     grid.redraw();
                 }
@@ -35,8 +31,11 @@ public class PixelGridExample extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPattern[][] gridPatterns = new GridPattern[][] {
-                {BlockGridPattern.INSTANCE, BlinkerGridPattern.INSTANCE, GliderGridPattern.INSTANCE},
-                {TubGridPattern.INSTANCE, PulsarGridPattern.INSTANCE, HWSSGridPattern.INSTANCE},
+                //{BlockGridPattern.INSTANCE, RPentominoGridPattern.INSTANCE, GliderGridPattern.INSTANCE},
+                //{PulsarGridPattern.INSTANCE, BlinkerGridPattern.INSTANCE, HWSSGridPattern.INSTANCE},
+                //{RPentominoGridPattern.INSTANCE, RPentominoGridPattern.INSTANCE, RPentominoGridPattern.INSTANCE},
+                {EmptyGridPattern.INSTANCE, EmptyGridPattern.INSTANCE, EmptyGridPattern.INSTANCE},
+                {EmptyGridPattern.INSTANCE, MomoGridPattern.INSTANCE, EmptyGridPattern.INSTANCE},
         };
         grid = new Grid(gridPatterns);
 
